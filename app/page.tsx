@@ -1,103 +1,115 @@
-import Image from "next/image";
+"use client";
+import { motion } from "motion/react";
+import { XIcon } from "lucide-react";
+import { Magnetic } from "@/components/ui/magnetic";
+import Link from "next/link";
+import {
+  PROJECTS,
+  WORK_EXPERIENCE,
+  BLOG_POSTS,
+  EMAIL,
+  SOCIAL_LINKS,
+} from "./data";
+import { useEffect, useState } from "react";
+import { TextEffect } from "@/components/ui/text-effect";
 
-export default function Home() {
+const VARIANTS_CONTAINER = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const VARIANTS_SECTION = {
+  hidden: { opacity: 0, y: 20, filter: "blur(8px)" },
+  visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+};
+
+const TRANSITION_SECTION = {
+  duration: 0.3,
+};
+
+function MagneticSocialLink({
+  children,
+  link,
+}: {
+  children: React.ReactNode;
+  link: string;
+}) {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
+      <a
+        href={link}
+        className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-amber-600 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-amber-500"
+      >
+        {children}
+        <svg
+          width="15"
+          height="15"
+          viewBox="0 0 15 15"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-3 w-3"
+        >
+          <path
+            d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z"
+            fill="currentColor"
+            fillRule="evenodd"
+            clipRule="evenodd"
+          ></path>
+        </svg>
+      </a>
+    </Magnetic>
+  );
+}
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+export default function Personal() {
+  return (
+    <motion.main
+      className=""
+      variants={VARIANTS_CONTAINER}
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.section
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+      >
+        <div className="px-4 py-12 flex-1 border-y">
+          <h3 className="text-lg font-bold">About</h3>
+          <p className="text-zinc-600 dark:text-zinc-400">
+            I&apos;m{" "}
+            <span className="text-amber-600 dark:text-amber-500">
+              Nethaka De Saram
+            </span>
+            , a student based in Sri Lanka.
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </motion.section>
+
+      <motion.section
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+        className="px-4 flex-1 py-12 border-b"
+      >
+        <h3 className="text-lg font-bold">Let's Connect</h3>
+        <p className="mb-5 text-zinc-600 dark:text-zinc-400">
+          Feel free to contact me at{" "}
+          <a className="underline dark:text-zinc-300" href={`mailto:${EMAIL}`}>
+            {EMAIL}
+          </a>
+        </p>
+        <div className="flex items-center justify-start space-x-3">
+          {SOCIAL_LINKS.map((link) => (
+            <MagneticSocialLink key={link.label} link={link.link}>
+              {link.label}
+            </MagneticSocialLink>
+          ))}
+        </div>
+      </motion.section>
+    </motion.main>
   );
 }
