@@ -1,17 +1,28 @@
+/*
+ *  
+ *   Copyright 2025 Nethaka De Saram
+ *  
+ *  Licensed under the Apache License, Version 2.0 (the 'License');
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *  
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *  
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an 'AS IS' BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *  
+ *  
+ *  
+ *  
+ *  Created on Mon Jul 28 2025
+ *  
+ */
+
 "use client";
 import { motion } from "motion/react";
-import { XIcon } from "lucide-react";
-import { Magnetic } from "@/components/ui/magnetic";
-import Link from "next/link";
-import {
-  PROJECTS,
-  WORK_EXPERIENCE,
-  BLOG_POSTS,
-  EMAIL,
-  SOCIAL_LINKS,
-} from "./data";
-import { useEffect, useState } from "react";
-import { TextEffect } from "@/components/ui/text-effect";
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -32,41 +43,8 @@ const TRANSITION_SECTION = {
   duration: 0.3,
 };
 
-function MagneticSocialLink({
-  children,
-  link,
-}: {
-  children: React.ReactNode;
-  link: string;
-}) {
-  return (
-    <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
-      <a
-        href={link}
-        className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-amber-600 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-amber-500"
-      >
-        {children}
-        <svg
-          width="15"
-          height="15"
-          viewBox="0 0 15 15"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-3 w-3"
-        >
-          <path
-            d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z"
-            fill="currentColor"
-            fillRule="evenodd"
-            clipRule="evenodd"
-          ></path>
-        </svg>
-      </a>
-    </Magnetic>
-  );
-}
 
-export default function Personal() {
+export default function Home() {
   return (
     <motion.main
       className=""
@@ -97,18 +75,28 @@ export default function Personal() {
       >
         <h3 className="text-lg font-bold">Let's Connect</h3>
         <p className="mb-5 text-zinc-600 dark:text-zinc-400">
-          Feel free to contact me at{" "}
-          <a className="underline dark:text-zinc-300" href={`mailto:${EMAIL}`}>
-            {EMAIL}
+          Feel free to{" "}
+          <a className="hover:text-amber-600 underline dark:text-zinc-300 dark:hover:text-amber-500" href={`mailto:${"sades.dev01@gmail.com"}`}>
+            email me
           </a>
+          {" "}
+          and find my projects' source code{" "}
+          <a className="hover:text-amber-600 underline dark:text-zinc-300 dark:hover:text-amber-500" href={"https://www.github.com/nethaka-sades"}>
+              here on github.
+          </a>
+          {" "}
+          Also I am available on{" "}
+          <a className="hover:text-amber-600 underline dark:text-zinc-300 dark:hover:text-amber-500" href={"https://www.instagram.com/nethaka_de_saram/"}>
+              instagram
+          </a>
+          {" "}
+          and I tweet on{" "}
+          <a className="hover:text-amber-600 underline dark:text-zinc-300 dark:hover:text-amber-500" href={"https://www.x.com/nethaka_sades"}>
+              X.
+          </a>
+          {" "}
         </p>
-        <div className="flex items-center justify-start space-x-3">
-          {SOCIAL_LINKS.map((link) => (
-            <MagneticSocialLink key={link.label} link={link.link}>
-              {link.label}
-            </MagneticSocialLink>
-          ))}
-        </div>
+        
       </motion.section>
     </motion.main>
   );
