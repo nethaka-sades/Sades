@@ -1,7 +1,32 @@
+/*  
+ *  
+ *   Copyright 2025 Nethaka De Saram
+ *  
+ *  Licensed under the Apache License, Version 2.0 (the 'License');
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *  
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *  
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an 'AS IS' BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *  
+ *  
+ *  
+ *  
+ *  Created on Mon Jul 28 2025
+ *  
+ *  This file is directly inspired by Nim Portfolio Template by Julien Thibeaut
+ *  https://github.com/ibelick/nim 
+ * 
+ */
+
 "use client";
 import { AnimatedBackground } from "@/components/ui/animated-background";
-import { TextLoop } from "@/components/ui/text-loop";
-import { MonitorIcon, MoonIcon, SunIcon } from "lucide-react";
+import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
@@ -65,7 +90,7 @@ export function Footer() {
   return (
     <footer className="mt-24 border-t px-4 py-4">
       <div className="flex items-center justify-between">
-        <a href="https://github.com/ibelick/nim" target="_blank">
+        <a href="https://github.com/nethaka-sades" target="_blank">
           <span className="text-xs text-zinc-500 ">
             © 2025 Nethaka De Saram.
           </span>
