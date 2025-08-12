@@ -67,6 +67,7 @@ export default function Home() {
           </p>
         </div>
       </motion.section>
+      
 
       <motion.section
         variants={VARIANTS_SECTION}
